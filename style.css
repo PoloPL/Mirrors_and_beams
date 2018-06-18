@@ -12,4 +12,9 @@ svg g {
 	opacity: 0.6;
 	stroke: Lavender;
 }
-
+.static {
+  cursor: not-allowed;
+}
+.draggable {
+  cursor: move;
+}

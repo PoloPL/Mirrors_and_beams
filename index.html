@@ -5,37 +5,38 @@
 	<title>Mirrors and beams</title>
 	<link rel="stylesheet" href="style.css"/>
 </head>
-
+xmlns="http://www.w3.org/2000/svg"
 <body>
 <h1>Mirrors and beams</h1>
-<div id="game">
+
+<div >
+<svg id="game"
+onload="makeDraggable(evt)"
+width="405" height="555"
+</svg>
 </div>
+
 <script src="drawing.js"></script>
 <script src="game.js"></script>
 <script src="utils.js"></script>
 <script>
-var game;
 
-window.onload = function() {
-	game = init(id$("game"), 8, 9);
-	game.htmlNode.style.width = "500px";
-	game.htmlNode.style.height = "500px";
-
-	move(game);
-	draw(game);
-}
+var
+	root,
+	game;
 	
-function init(root, n, m) {
+window.onload = function() {
 
-	var htmlNode = document.createElement("div");
-	root.appendChild(htmlNode);
+	root = id$("game");
+	game = initGame(root);
 
-	var game = {
-		n,
-		m,
-		htmlNode,
-		data: []
-	};
+	updateBoard(game);
+}
+
+function initGame(root, n, m) {
+
+	var game = newGame();
+	createBoard(game, root);
 
 	return game;
 }
